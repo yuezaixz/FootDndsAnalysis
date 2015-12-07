@@ -79,6 +79,12 @@
 			isa = PBXGroup;
 			children = (
 				A61A35D71C155E6300695FC2 /* Constants */,
+				A61A35E01C15625600695FC2 /* Utils */,
+				A61A35DD1C15622300695FC2 /* Views */,
+				A61A35DE1C15622D00695FC2 /* Controls */,
+				A61A35E31C15628E00695FC2 /* Services */,
+				A61A35E11C15626300695FC2 /* Models */,
+				A61A35DF1C15624A00695FC2 /* 3rdParty */,
 				A61A35C31C15574200695FC2 /* AppDelegate.h */,
 				A61A35C41C15574200695FC2 /* AppDelegate.m */,
 				A61A35C61C15574200695FC2 /* ViewController.h */,
@@ -109,6 +115,56 @@
 				A61A35DA1C155EC700695FC2 /* Colors.h */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		A61A35DD1C15622300695FC2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A61A35DE1C15622D00695FC2 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		A61A35DF1C15624A00695FC2 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = 3rdParty;
+			sourceTree = "<group>";
+		};
+		A61A35E01C15625600695FC2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		A61A35E11C15626300695FC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A61A35E21C15626D00695FC2 /* DBModel */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A61A35E21C15626D00695FC2 /* DBModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DBModel;
+			sourceTree = "<group>";
+		};
+		A61A35E31C15628E00695FC2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		D93FC540F68A072C18118166 /* Frameworks */ = {
