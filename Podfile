@@ -1,0 +1,3 @@
+platform :ios, '8.1'
+pod 'CorePlot', :git => 'https://github.com/core-plot/core-plot.git'
+pod 'FMDB'
