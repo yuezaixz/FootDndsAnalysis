@@ -5,10 +5,12 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
+  - LGBluetooth (1.1.5)
 
 DEPENDENCIES:
   - CorePlot (from `https://github.com/core-plot/core-plot.git`)
   - FMDB
+  - LGBluetooth
 
 EXTERNAL SOURCES:
   CorePlot:
@@ -22,5 +24,6 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   CorePlot: c1e9eeb17628baba3ab5ea63600d73d7e948d1c4
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  LGBluetooth: 8407d2de27bcbd4a9e11243290b928293ffa8881
 
 COCOAPODS: 0.39.0
