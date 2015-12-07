@@ -31,7 +31,7 @@
 //#define TARGET_IPHONE_SIMULATOR 1
 
 // 本地数据库名称
-#define SQLITE_NAME @"FDnds.sqlite"
+#define SQLITE_FILE_NAME @"FDnds.db"
 
 //************************
 //****是否[测试模式] YES 或 NO
