@@ -1,0 +1,40 @@
+//
+//  FootDndsAnalysis.pch
+//  FootDndsAnalysis
+//
+//  Created by 吴迪玮 on 15/12/7.
+//  Copyright © 2015年 Paodong. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "Notifications.h"
+#import "Strings.h"
+#import "Colors.h"
+#import "BluetoothUUIDs.h"
+#endif
+
+#ifdef DEBUG
+#       define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#       define DLog(...)
+#endif
+
+//如果需要在真机上强制开启模拟数据可以去掉下面注释
+//#define TARGET_IPHONE_SIMULATOR 1
+
+// 本地数据库名称
+#define SQLITE_NAME @"FDnds.sqlite"
+
+//************************
+//****是否[测试模式] YES 或 NO
+//****发布时要改成:NO
+//************************
+#define DEBUG_MODE NO

@@ -28,6 +28,10 @@
 		A61A35CC1C15574200695FC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A61A35CF1C15574200695FC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A61A35D11C15574200695FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A61A35D81C155E7900695FC2 /* BluetoothUUIDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BluetoothUUIDs.h; sourceTree = "<group>"; };
+		A61A35D91C155E8A00695FC2 /* Notifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notifications.h; sourceTree = "<group>"; };
+		A61A35DA1C155EC700695FC2 /* Colors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Colors.h; sourceTree = "<group>"; };
+		A61A35DC1C15610D00695FC2 /* FootDndsAnalysis.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootDndsAnalysis.pch; sourceTree = "<group>"; };
 		BA7C60E4ACC81CF5F438BBA5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EFD8F5B97E7E18E4228FEACD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,6 +78,7 @@
 		A61A35BF1C15574200695FC2 /* FootDndsAnalysis */ = {
 			isa = PBXGroup;
 			children = (
+				A61A35D71C155E6300695FC2 /* Constants */,
 				A61A35C31C15574200695FC2 /* AppDelegate.h */,
 				A61A35C41C15574200695FC2 /* AppDelegate.m */,
 				A61A35C61C15574200695FC2 /* ViewController.h */,
@@ -91,8 +96,19 @@
 			isa = PBXGroup;
 			children = (
 				A61A35C11C15574200695FC2 /* main.m */,
+				A61A35DC1C15610D00695FC2 /* FootDndsAnalysis.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A61A35D71C155E6300695FC2 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A61A35D81C155E7900695FC2 /* BluetoothUUIDs.h */,
+				A61A35D91C155E8A00695FC2 /* Notifications.h */,
+				A61A35DA1C155EC700695FC2 /* Colors.h */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 		D93FC540F68A072C18118166 /* Frameworks */ = {
@@ -337,6 +353,8 @@
 			baseConfigurationReference = BA7C60E4ACC81CF5F438BBA5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FootDndsAnalysis.pch;
 				INFOPLIST_FILE = FootDndsAnalysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.runmaf.FootDndsAnalysis;
@@ -349,6 +367,8 @@
 			baseConfigurationReference = 370FD1EC05F3C200C28E2935 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FootDndsAnalysis.pch;
 				INFOPLIST_FILE = FootDndsAnalysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.runmaf.FootDndsAnalysis;
