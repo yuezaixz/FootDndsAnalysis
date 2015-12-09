@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "DeviceSelectTabbarMenu.h"
 #import "LGBluetooth.h"
+#import "BleService.h"
 
 @interface ViewController ()
 
@@ -33,7 +34,11 @@
 }
 
 - (IBAction)actionDynamicTest:(id)sender {
-
+    FootPeripheal *footPeripheal = [BleService sharedInstance].footPeripheal;
+    if (footPeripheal && footPeripheal.writeCharact && footPeripheal.notifyCharact) {
+        [footPeripheal writeToStartFootData];
+        [footPeripheal startReadData];
+    }
 }
 
 - (IBAction)actionStaticTest:(id)sender {

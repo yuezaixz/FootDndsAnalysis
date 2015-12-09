@@ -26,6 +26,9 @@
 @property (weak,nonatomic) id<FootPeriphealDelegate> delegate;
 
 - (void)startReadData;
+- (void)stopReadData;
+
+- (void)writeToStartFootData;
 - (void)writeCharactForByte:(int8_t)aByte;
 - (void)writeCharactForStr:(NSString *)str;
 
