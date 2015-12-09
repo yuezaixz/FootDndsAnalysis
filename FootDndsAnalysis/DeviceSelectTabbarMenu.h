@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BleService.h"
+#import "FootBleDevTableViewCell.h"
+#import "LGBluetooth.h"
 
-@interface TabbarMenu : UIView
+@interface DeviceSelectTabbarMenu : UIView<UITableViewDelegate,UITableViewDataSource,BleDelegate,FootBleDevTableViewCellDelegate>
 
 @property (nonatomic) CGFloat diff;
+@property (nonatomic,strong) NSArray *peripherals;
 
 -(instancetype)initWithTabbarHeight:(CGFloat)tabbarHeight;
 - (void)triggerAction;

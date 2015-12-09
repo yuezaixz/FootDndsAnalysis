@@ -8,12 +8,12 @@
 
 #import "FootBleDevTableViewCell.h"
 #import "Colors.h"
+
     
 @interface FootBleDevTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UILabel *bleSignalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bleDeviceNameLabel;
-@property (weak, nonatomic) IBOutlet UIButton *bleConnectLabel;
 
 @end
 
@@ -22,11 +22,13 @@
 - (void)awakeFromNib {
     
     self.bleConnectLabel.layer.cornerRadius = self.bounds.size.height / 2.0f;
-//    self.bleConnectLabel.layer.borderColor = FOOT_DARK_GRAY_151.CGColor;
+    self.bleConnectLabel.layer.borderColor = FOOT_DARK_GRAY_151.CGColor;
     self.bleConnectLabel.layer.borderWidth = 1.0f;
     self.bleConnectLabel.layer.cornerRadius = self.bounds.size.height/4;
     
     self.bleConnectLabel.clipsToBounds = YES;
+    
+    self.backgroundColor = [UIColor clearColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -34,14 +36,10 @@
 }
 
 - (IBAction)connectBtnAction:(id)sender {
-    [self.bleConnectLabel setTitle:@"连接中" forState:UIControlStateNormal];
-    [self.peripheral connectWithCompletion:^(NSError *error) {
-        if (!error) {
-//            [[TestPeripheralManger sharedInstance].peripherals addObject:self.peripheral];
-            self.bleConnectLabel.hidden = YES;
-            [self.bleConnectLabel setTitle:@"重试" forState:UIControlStateNormal];
-        }
-    }];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(connectPeripheral:)]) {
+        [self.bleConnectLabel setTitle:@"连接中" forState:UIControlStateNormal];
+        [self.delegate performSelector:@selector(connectPeripheral:) withObject:self.peripheral];
+    }
 }
 
 -(void)setPeripheral:(LGPeripheral *)peripheral{

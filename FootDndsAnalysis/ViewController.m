@@ -7,14 +7,15 @@
 //
 
 #import "ViewController.h"
-#import "TabbarMenu.h"
+#import "DeviceSelectTabbarMenu.h"
+#import "LGBluetooth.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController{
-    TabbarMenu *menu;
+    DeviceSelectTabbarMenu *menu;
 }
 
 - (void)viewDidLoad {
@@ -24,7 +25,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    menu = [[TabbarMenu alloc] initWithTabbarHeight:40.0];
+    menu = [[DeviceSelectTabbarMenu alloc] initWithTabbarHeight:40.0];
 }
 
 - (void)didReceiveMemoryWarning {

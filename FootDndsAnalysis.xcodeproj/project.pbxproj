@@ -20,7 +20,8 @@
 		A65B73D61C18046000C72EF1 /* FootBleDevTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A65B73D41C18046000C72EF1 /* FootBleDevTableViewCell.m */; };
 		A65B73D71C18046000C72EF1 /* FootBleDevTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A65B73D51C18046000C72EF1 /* FootBleDevTableViewCell.xib */; };
 		A65B73DB1C1804ED00C72EF1 /* DeviceSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A65B73DA1C1804ED00C72EF1 /* DeviceSelectViewController.m */; };
-		A65B73DE1C18125D00C72EF1 /* TabbarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A65B73DD1C18125D00C72EF1 /* TabbarMenu.m */; };
+		A65B73DE1C18125D00C72EF1 /* DeviceSelectTabbarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A65B73DD1C18125D00C72EF1 /* DeviceSelectTabbarMenu.m */; };
+		A65B73E11C186D4D00C72EF1 /* FootPeripheal.m in Sources */ = {isa = PBXBuildFile; fileRef = A65B73E01C186D4D00C72EF1 /* FootPeripheal.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,8 +51,10 @@
 		A65B73D51C18046000C72EF1 /* FootBleDevTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FootBleDevTableViewCell.xib; sourceTree = "<group>"; };
 		A65B73D91C1804ED00C72EF1 /* DeviceSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceSelectViewController.h; sourceTree = "<group>"; };
 		A65B73DA1C1804ED00C72EF1 /* DeviceSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceSelectViewController.m; sourceTree = "<group>"; };
-		A65B73DC1C18125D00C72EF1 /* TabbarMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarMenu.h; sourceTree = "<group>"; };
-		A65B73DD1C18125D00C72EF1 /* TabbarMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarMenu.m; sourceTree = "<group>"; };
+		A65B73DC1C18125D00C72EF1 /* DeviceSelectTabbarMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceSelectTabbarMenu.h; sourceTree = "<group>"; };
+		A65B73DD1C18125D00C72EF1 /* DeviceSelectTabbarMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceSelectTabbarMenu.m; sourceTree = "<group>"; };
+		A65B73DF1C186D4D00C72EF1 /* FootPeripheal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootPeripheal.h; sourceTree = "<group>"; };
+		A65B73E01C186D4D00C72EF1 /* FootPeripheal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootPeripheal.m; sourceTree = "<group>"; };
 		BA7C60E4ACC81CF5F438BBA5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EFD8F5B97E7E18E4228FEACD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,8 +144,8 @@
 		A61A35DD1C15622300695FC2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A65B73DC1C18125D00C72EF1 /* TabbarMenu.h */,
-				A65B73DD1C18125D00C72EF1 /* TabbarMenu.m */,
+				A65B73DC1C18125D00C72EF1 /* DeviceSelectTabbarMenu.h */,
+				A65B73DD1C18125D00C72EF1 /* DeviceSelectTabbarMenu.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -174,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				A61A35E21C15626D00695FC2 /* DBModel */,
+				A65B73DF1C186D4D00C72EF1 /* FootPeripheal.h */,
+				A65B73E01C186D4D00C72EF1 /* FootPeripheal.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -356,12 +361,13 @@
 			files = (
 				A61A35EA1C15644E00695FC2 /* WDDBService.m in Sources */,
 				A61A35C81C15574200695FC2 /* ViewController.m in Sources */,
-				A65B73DE1C18125D00C72EF1 /* TabbarMenu.m in Sources */,
+				A65B73DE1C18125D00C72EF1 /* DeviceSelectTabbarMenu.m in Sources */,
 				A61A35C51C15574200695FC2 /* AppDelegate.m in Sources */,
 				A61A35ED1C157AE500695FC2 /* BleService.m in Sources */,
 				A65B73D61C18046000C72EF1 /* FootBleDevTableViewCell.m in Sources */,
 				A61A35C21C15574200695FC2 /* main.m in Sources */,
 				A65B73DB1C1804ED00C72EF1 /* DeviceSelectViewController.m in Sources */,
+				A65B73E11C186D4D00C72EF1 /* FootPeripheal.m in Sources */,
 				A61A35E91C15644E00695FC2 /* WDBaseModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

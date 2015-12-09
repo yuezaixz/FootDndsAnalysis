@@ -10,5 +10,6 @@
 #define Foot_Colors_h
 
 #define FOOT_DARK_GRAY ([UIColor colorWithRed:216.0/255.0 green:216.0/255.0 blue:216.0/255.0 alpha:1.0])
+#define FOOT_DARK_GRAY_151 ([UIColor colorWithRed:151.0/255.0 green:151.0/255.0 blue:151.0/255.0 alpha:1.0])
 
 #endif

@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "LGBluetooth.h"
 
+@protocol FootBleDevTableViewCellDelegate <NSObject>
+
+- (void)connectPeripheral:(LGPeripheral *)peripheral;
+
+@end
+
 @interface FootBleDevTableViewCell : UITableViewCell
 
 @property (nonatomic,strong) LGPeripheral *peripheral;
+@property (nonatomic,weak) id<FootBleDevTableViewCellDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIButton *bleConnectLabel;
 
 @end

@@ -6,11 +6,13 @@
 //  Copyright © 2015年 Paodong. All rights reserved.
 //
 
-#import "TabbarMenu.h"
+#import "DeviceSelectTabbarMenu.h"
 
 #define TOPSPACE 64.0
 
-@interface TabbarMenu()
+static NSString *FootBleDevTableViewCellIdentifier = @"FootBleDevTableViewCellIdentifier";
+
+@interface DeviceSelectTabbarMenu()
 
 @property (strong,nonatomic) UIView *normalRect;
 @property (strong,nonatomic) UIView *springRect;
@@ -27,7 +29,7 @@
 
 @end
 
-@implementation TabbarMenu
+@implementation DeviceSelectTabbarMenu
 
 -(instancetype)initWithTabbarHeight:(CGFloat)tabbarHeight{
     _tabbarheight = tabbarHeight;
@@ -61,10 +63,15 @@
     self.springRect.hidden = YES;
     [self.keyWindow addSubview:self.springRect];
     
-    
+    [BleService sharedInstance].delegate = self;
     self.deviceView = [[UITableView alloc] initWithFrame:CGRectMake(0, TOPSPACE+self.tabbarheight, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) -  TOPSPACE - self.tabbarheight)];
     self.deviceView.backgroundColor = [UIColor clearColor];
     self.deviceView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.deviceView.delegate = self;
+    self.deviceView.dataSource = self;
+    [self.deviceView registerNib:[UINib nibWithNibName:@"FootBleDevTableViewCell" bundle:nil]
+               forCellReuseIdentifier:FootBleDevTableViewCellIdentifier];
+    self.deviceView.tableFooterView = [[UIView alloc] init];
     [self addSubview:self.deviceView];
     
     _animateButton = [[UIButton alloc] initWithFrame:CGRectMake(5, TOPSPACE + (self.tabbarheight - 30)/2, 50, 30)];
@@ -162,7 +169,82 @@
     }
 }
 
+-(void)setOpened:(BOOL)opened{
+    if (opened) {
+        self.peripherals = [BleService sharedInstance].currentPeripherals;
+        [[BleService sharedInstance] startSearch:3];
+    } else {
+        [[BleService sharedInstance] stop];
+    }
+    _opened = opened;
+}
 
+-(void)setPeripherals:(NSArray *)peripherals{
+    _peripherals = peripherals;
+    [self.deviceView reloadData];
+}
+
+#pragma mark - device
+- (void)successScanPeripherals:(NSArray *)peripherals{
+    self.peripherals = peripherals;
+}
+- (void)successConnectPeripheral:(FootPeripheal *)footPeripheral{
+    [[BleService sharedInstance] stop];
+    self.peripherals = nil;
+    [self.deviceView reloadData];
+    NSLog(@"成功连接");
+}
+- (void)successFindWriteCharct:(LGCharacteristic *)writeCharct{
+    NSLog(@"成功找到写特征");
+}
+- (void)successFindReadCharct:(LGCharacteristic *)readCharct{
+    NSLog(@"成功找到读特征");
+}
+
+#pragma mark - FootBleDevTableViewCellDelegate
+- (void)connectPeripheral:(LGPeripheral *)peripheral{
+    [[BleService sharedInstance] connectPeripheral:peripheral];
+}
+
+
+#pragma mark - table view
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.peripherals count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    FootBleDevTableViewCell *cell = [self.deviceView dequeueReusableCellWithIdentifier:FootBleDevTableViewCellIdentifier];
+    [cell setPeripheral:[self.peripherals objectAtIndex:indexPath.row]];
+    cell.delegate = self;
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"";
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)table heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
 
 
 
