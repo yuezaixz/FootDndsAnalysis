@@ -7,19 +7,37 @@
 //
 
 #import "ViewController.h"
+#import "TabbarMenu.h"
 
 @interface ViewController ()
 
 @end
 
-@implementation ViewController
+@implementation ViewController{
+    TabbarMenu *menu;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    menu = [[TabbarMenu alloc] initWithTabbarHeight:40.0];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+- (IBAction)actionDynamicTest:(id)sender {
+
+}
+
+- (IBAction)actionStaticTest:(id)sender {
+    
+}
+
 
 @end

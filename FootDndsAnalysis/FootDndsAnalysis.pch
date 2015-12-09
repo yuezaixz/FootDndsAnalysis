@@ -16,7 +16,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "Notifications.h"
-#import "Strings.h"
 #import "Colors.h"
 #import "BluetoothUUIDs.h"
 #endif
@@ -38,3 +37,10 @@
 //****发布时要改成:NO
 //************************
 #define DEBUG_MODE NO
+
+// 系统版本
+#define ISIOS8ORLATER [[[UIDevice currentDevice] systemVersion] floatValue]>=8
+#define ISIOS7LATER [[[UIDevice currentDevice] systemVersion] floatValue]>=7
+#define ISIOS6LATER [[[UIDevice currentDevice] systemVersion] floatValue]>=6
+#define ISBEFOREIOS7 [[[UIDevice currentDevice] systemVersion] floatValue]<7
+#define ISIOS9ORLATER [[[UIDevice currentDevice] systemVersion] floatValue]>=9
