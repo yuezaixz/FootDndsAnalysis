@@ -62,7 +62,7 @@
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Z35-WC-zQv" firstAttribute="top" secondItem="HU2-zm-4IJ" secondAttribute="bottom" constant="52" id="GUz-WS-BaG"/>
                             <constraint firstItem="HU2-zm-4IJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="114" id="LaK-Kv-foo"/>

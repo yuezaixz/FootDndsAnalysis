@@ -4,3 +4,4 @@ Pods/Pods.xcodeproj/xcuserdata/David_Woo.xcuserdatad
 BluetoothUUIDs.h
 BleService.h
 BleService.m
+FootPeripheal.m
