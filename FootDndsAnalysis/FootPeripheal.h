@@ -29,7 +29,11 @@
 - (void)stopReadData;
 
 - (void)writeToStartFootData;
+- (void)writeToStopFootData;
 - (void)writeCharactForByte:(int8_t)aByte;
 - (void)writeCharactForStr:(NSString *)str;
+- (void)disconnect;
+
+- (BOOL)isValid;
 
 @end

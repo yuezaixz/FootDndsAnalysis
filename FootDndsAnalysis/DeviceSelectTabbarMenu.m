@@ -24,8 +24,11 @@ static NSString *FootBleDevTableViewCellIdentifier = @"FootBleDevTableViewCellId
 @property (nonatomic) BOOL opened;
 @property (strong,nonatomic) CADisplayLink *displayLink;
 @property (nonatomic) NSInteger animationCount;
-@property (strong,nonatomic) UIButton *animateButton;
 @property (strong,nonatomic) UITableView *deviceView;
+@property (strong,nonatomic) UIView *topView;
+@property (strong,nonatomic) UIButton *animateButton;
+@property (strong,nonatomic) UILabel *footDeviceLabel;
+@property (strong,nonatomic) UIButton *disConnectBtn;
 
 @end
 
@@ -74,10 +77,29 @@ static NSString *FootBleDevTableViewCellIdentifier = @"FootBleDevTableViewCellId
     self.deviceView.tableFooterView = [[UIView alloc] init];
     [self addSubview:self.deviceView];
     
-    _animateButton = [[UIButton alloc] initWithFrame:CGRectMake(5, TOPSPACE + (self.tabbarheight - 30)/2, 50, 30)];
-    [_animateButton setTitle:@"蓝牙" forState:UIControlStateNormal];
-    [_animateButton addTarget:self action:@selector(triggerAction) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_animateButton];
+    self.topView = [[UIView alloc] initWithFrame:CGRectMake(0, TOPSPACE, CGRectGetWidth([UIScreen mainScreen].bounds), self.tabbarheight)];
+    
+    self.animateButton = [[UIButton alloc] initWithFrame:CGRectMake(5, (self.tabbarheight - 30)/2, 50, 30)];
+    [self.animateButton setTitle:@"蓝牙" forState:UIControlStateNormal];
+    [self.animateButton addTarget:self action:@selector(triggerAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.topView addSubview:self.animateButton];
+    
+    self.footDeviceLabel = [[UILabel alloc] initWithFrame:CGRectMake(5+50+15, (self.tabbarheight - 30)/2, CGRectGetWidth([UIScreen mainScreen].bounds)-(15+50)-(50+5+15), 30)];
+    [self.topView addSubview:self.footDeviceLabel];
+    self.disConnectBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth([UIScreen mainScreen].bounds)-15-50,(self.tabbarheight - 30)/2 , 50, 30)];
+    [self.disConnectBtn setTitle:@"断开" forState:UIControlStateNormal];
+    [self.disConnectBtn addTarget:self action:@selector(disConnectAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.disConnectBtn setHidden:YES];
+    self.disConnectBtn.layer.cornerRadius = self.disConnectBtn.bounds.size.height / 2.0f;
+    self.disConnectBtn.layer.borderColor = FOOT_DARK_GRAY_151.CGColor;
+    self.disConnectBtn.layer.borderWidth = 1.0f;
+    self.disConnectBtn.layer.cornerRadius = self.disConnectBtn.bounds.size.height/4;
+    
+    self.disConnectBtn.clipsToBounds = YES;
+    [self.topView addSubview:self.disConnectBtn];
+    
+    
+    [self addSubview:self.topView];
 }
 
 - (void)drawRect:(CGRect)rect{
@@ -95,8 +117,13 @@ static NSString *FootBleDevTableViewCellIdentifier = @"FootBleDevTableViewCellId
 }
 
 - (void)triggerAction{
+    if (self.topView.hidden) {
+        return;
+    }
+    self.topView.hidden = YES;
     if (!self.opened) {
         self.opened = YES;
+        [self beforOpenAction];
         [self startAnimation];
         [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^(){
             self.springRect.center = CGPointMake(self.springRect.center.x, self.springRect.center.y - 40);
@@ -112,11 +139,14 @@ static NSString *FootBleDevTableViewCellIdentifier = @"FootBleDevTableViewCellId
                 self.springRect.center = CGPointMake(self.springRect.center.x, 100);
             } completion:^(BOOL finished){
                 [self stopAnimation];
+                self.topView.hidden = NO;
+                [self afterOpenAction];
             }];
         }];
     } else {
         self.opened = NO;
         [self startAnimation];
+        [self beforeCloseAction];
         [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^(){
             self.frame = self.initialFrame;
         } completion:nil];
@@ -136,6 +166,8 @@ static NSString *FootBleDevTableViewCellIdentifier = @"FootBleDevTableViewCellId
                     self.springRect.center = CGPointMake(self.springRect.center.x, CGRectGetHeight([UIScreen mainScreen].bounds)- 30 - 50);
                 } completion:^(BOOL isFinish){
                     [self stopAnimation];
+                    self.topView.hidden = NO;
+                    [self afterCloseAction];
                 }];
             }];
         }];
@@ -172,7 +204,7 @@ static NSString *FootBleDevTableViewCellIdentifier = @"FootBleDevTableViewCellId
 -(void)setOpened:(BOOL)opened{
     if (opened) {
         self.peripherals = [BleService sharedInstance].currentPeripherals;
-        [[BleService sharedInstance] startSearch:3];
+        [[BleService sharedInstance] startSearch:2];
     } else {
         [[BleService sharedInstance] stop];
     }
@@ -189,9 +221,11 @@ static NSString *FootBleDevTableViewCellIdentifier = @"FootBleDevTableViewCellId
     self.peripherals = peripherals;
 }
 - (void)successConnectPeripheral:(FootPeripheal *)footPeripheral{
-    [[BleService sharedInstance] stop];
     self.peripherals = nil;
     [self.deviceView reloadData];
+    self.footDeviceLabel.text = [BleService sharedInstance].footPeripheal.peripheral.name;
+    self.disConnectBtn.hidden = NO;
+    [self triggerAction];
     NSLog(@"成功连接");
 }
 - (void)successFindWriteCharct:(LGCharacteristic *)writeCharct{
@@ -206,6 +240,39 @@ static NSString *FootBleDevTableViewCellIdentifier = @"FootBleDevTableViewCellId
     [[BleService sharedInstance] connectPeripheral:peripheral];
 }
 
+- (void)disConnectAction{
+    [[BleService sharedInstance] disconnectPeripheral:[BleService sharedInstance].footPeripheal.peripheral withCompletion:^(NSError *error){
+        self.footDeviceLabel.text = @"";
+        self.disConnectBtn.hidden = YES;
+        if (self.opened) {
+            self.peripherals = [BleService sharedInstance].currentPeripherals;
+            [[BleService sharedInstance] startSearch:2];
+        }
+    }];
+}
+
+#pragma mark - aop callback
+
+- (void)beforOpenAction{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(beforOpenAction)]) {
+        [self.delegate performSelector:@selector(beforOpenAction)];
+    }
+}
+- (void)afterOpenAction{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(afterOpenAction)]) {
+        [self.delegate performSelector:@selector(afterOpenAction)];
+    }
+}
+- (void)beforeCloseAction{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(beforeCloseAction)]) {
+        [self.delegate performSelector:@selector(beforeCloseAction)];
+    }
+}
+- (void)afterCloseAction{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(afterCloseAction)]) {
+        [self.delegate performSelector:@selector(afterCloseAction)];
+    }
+}
 
 #pragma mark - table view
 

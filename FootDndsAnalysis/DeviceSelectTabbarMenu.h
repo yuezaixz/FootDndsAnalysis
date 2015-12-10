@@ -11,10 +11,21 @@
 #import "FootBleDevTableViewCell.h"
 #import "LGBluetooth.h"
 
+@protocol DeviceSelectTabbarMenuDelegate <NSObject>
+
+@optional
+- (void)beforOpenAction;
+- (void)afterOpenAction;
+- (void)beforeCloseAction;
+- (void)afterCloseAction;
+
+@end
+
 @interface DeviceSelectTabbarMenu : UIView<UITableViewDelegate,UITableViewDataSource,BleDelegate,FootBleDevTableViewCellDelegate>
 
 @property (nonatomic) CGFloat diff;
 @property (nonatomic,strong) NSArray *peripherals;
+@property (weak,nonatomic) id<DeviceSelectTabbarMenuDelegate> delegate;
 
 -(instancetype)initWithTabbarHeight:(CGFloat)tabbarHeight;
 - (void)triggerAction;

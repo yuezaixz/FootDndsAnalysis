@@ -20,6 +20,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z35-WC-zQv">
                                 <rect key="frame" x="68" y="266" width="184" height="80"/>
                                 <animations/>
+                                <color key="backgroundColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="bmc-Bn-R1U"/>
                                     <constraint firstAttribute="width" constant="184" id="dZ0-Zy-qbY"/>
@@ -30,6 +31,12 @@
                                         <integer key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="actionStaticTest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lT1-51-4Ph"/>
@@ -38,7 +45,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HU2-zm-4IJ">
                                 <rect key="frame" x="68" y="134" width="184" height="80"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.72156862749999995" green="0.91372549020000005" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="9kX-wU-OUd"/>
                                     <constraint firstAttribute="width" constant="184" id="Ayu-tm-8EK"/>
@@ -71,6 +78,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3as-T5-P5Z"/>
+                    <connections>
+                        <outlet property="dynamicBtn" destination="HU2-zm-4IJ" id="7df-H8-yTe"/>
+                        <outlet property="staticBtn" destination="Z35-WC-zQv" id="aMP-PE-1el"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

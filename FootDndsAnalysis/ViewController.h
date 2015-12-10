@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DeviceSelectTabbarMenu.h"
+#import "BleService.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<DeviceSelectTabbarMenuDelegate,BleDelegate>
 
 
 @end
