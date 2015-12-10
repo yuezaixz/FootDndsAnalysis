@@ -36,7 +36,7 @@
 
 - (IBAction)actionDynamicTest:(id)sender {
     FootPeripheal *footPeripheal = [BleService sharedInstance].footPeripheal;
-    if (footPeripheal && footPeripheal.writeCharact && footPeripheal.notifyCharact) {
+    if ([footPeripheal isValid]) {
         [footPeripheal writeToStartFootData];
         [footPeripheal startReadData];
     }
@@ -44,7 +44,7 @@
 
 - (IBAction)actionStaticTest:(id)sender {
     FootPeripheal *footPeripheal = [BleService sharedInstance].footPeripheal;
-    if (footPeripheal && footPeripheal.writeCharact && footPeripheal.notifyCharact) {
+    if ([footPeripheal isValid]) {
         [footPeripheal writeToStopFootData];
         [footPeripheal stopReadData];
     }
