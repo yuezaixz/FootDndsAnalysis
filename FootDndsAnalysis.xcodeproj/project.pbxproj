@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		A31D6D7FA428165D238C2B06 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD8F5B97E7E18E4228FEACD /* libPods.a */; };
 		A60A53451C1A722A0069C92D /* FootService.m in Sources */ = {isa = PBXBuildFile; fileRef = A60A53441C1A722A0069C92D /* FootService.m */; };
+		A60A53481C1A7BB00069C92D /* FootDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A60A53471C1A7BB00069C92D /* FootDataModel.m */; };
+		A60A534B1C1A7C280069C92D /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A60A534A1C1A7C280069C92D /* CommonUtils.m */; };
+		A60A53511C1A7F5D0069C92D /* FootUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A60A53501C1A7F5D0069C92D /* FootUtils.m */; };
 		A61A35C21C15574200695FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A61A35C11C15574200695FC2 /* main.m */; };
 		A61A35C51C15574200695FC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A61A35C41C15574200695FC2 /* AppDelegate.m */; };
 		A61A35C81C15574200695FC2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61A35C71C15574200695FC2 /* ViewController.m */; };
@@ -29,6 +32,12 @@
 		370FD1EC05F3C200C28E2935 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A60A53431C1A722A0069C92D /* FootService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootService.h; sourceTree = "<group>"; };
 		A60A53441C1A722A0069C92D /* FootService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootService.m; sourceTree = "<group>"; };
+		A60A53461C1A7BB00069C92D /* FootDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootDataModel.h; sourceTree = "<group>"; };
+		A60A53471C1A7BB00069C92D /* FootDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootDataModel.m; sourceTree = "<group>"; };
+		A60A53491C1A7C280069C92D /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		A60A534A1C1A7C280069C92D /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
+		A60A534F1C1A7F5D0069C92D /* FootUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootUtils.h; sourceTree = "<group>"; };
+		A60A53501C1A7F5D0069C92D /* FootUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootUtils.m; sourceTree = "<group>"; };
 		A61A35BD1C15574200695FC2 /* FootDndsAnalysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootDndsAnalysis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61A35C11C15574200695FC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A61A35C31C15574200695FC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -172,6 +181,10 @@
 		A61A35E01C15625600695FC2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A60A53491C1A7C280069C92D /* CommonUtils.h */,
+				A60A534A1C1A7C280069C92D /* CommonUtils.m */,
+				A60A534F1C1A7F5D0069C92D /* FootUtils.h */,
+				A60A53501C1A7F5D0069C92D /* FootUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -189,6 +202,8 @@
 		A61A35E21C15626D00695FC2 /* DBModel */ = {
 			isa = PBXGroup;
 			children = (
+				A60A53461C1A7BB00069C92D /* FootDataModel.h */,
+				A60A53471C1A7BB00069C92D /* FootDataModel.m */,
 			);
 			name = DBModel;
 			sourceTree = "<group>";
@@ -365,15 +380,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A61A35EA1C15644E00695FC2 /* WDDBService.m in Sources */,
+				A60A53481C1A7BB00069C92D /* FootDataModel.m in Sources */,
 				A61A35C81C15574200695FC2 /* ViewController.m in Sources */,
 				A65B73DE1C18125D00C72EF1 /* DeviceSelectTabbarMenu.m in Sources */,
 				A60A53451C1A722A0069C92D /* FootService.m in Sources */,
+				A60A53511C1A7F5D0069C92D /* FootUtils.m in Sources */,
 				A61A35C51C15574200695FC2 /* AppDelegate.m in Sources */,
 				A61A35ED1C157AE500695FC2 /* BleService.m in Sources */,
 				A65B73D61C18046000C72EF1 /* FootBleDevTableViewCell.m in Sources */,
 				A61A35C21C15574200695FC2 /* main.m in Sources */,
 				A65B73DB1C1804ED00C72EF1 /* DeviceSelectViewController.m in Sources */,
 				A65B73E11C186D4D00C72EF1 /* FootPeripheal.m in Sources */,
+				A60A534B1C1A7C280069C92D /* CommonUtils.m in Sources */,
 				A61A35E91C15644E00695FC2 /* WDBaseModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

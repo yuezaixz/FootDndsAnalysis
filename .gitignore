@@ -6,3 +6,6 @@ BleService.h
 BleService.m
 FootPeripheal.m
 FootService.m
+FootUtils.m
+FootDataModel.m
+FootDataModel.h
