@@ -5,3 +5,4 @@ BluetoothUUIDs.h
 BleService.h
 BleService.m
 FootPeripheal.m
+FootService.m
